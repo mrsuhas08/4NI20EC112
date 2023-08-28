@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Train Time</title>
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  
+  <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.js"></script>
+
+  
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+  
+<div id="slideshow">
+    <img src="assets/img/tunnel.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/urban_lg.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/urban_lg.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/london.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/subway.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/orsay5.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/kings-cross.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/DoF.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/orsay2.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/tunnel2.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/ind-railway-04.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/orsay.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/penn_red.jpg" class="bgM" class="img-responsive" />
+    <img src="assets/img/tracks.jpg" class="bgM" class="img-responsive" />
+  </div>
+</div>
+  <div class="container">
+    
+    <div class="jumbotron text-center">
+
+
+      <h1>John Doe Railways</h1>
+      <hr>
+      
+      <h2>Local Time:
+        <span id="currentTime"></span>
+      </h2>
+    </div>
+    
+
+    <div class="row">
+      
+      <div class="col-sm-9">
+        
+        <div class="panel panel-primary">
+          <div class="panel-heading">Train Details</div>
+          <div class="panel-body">
+            <div class="panel-body">
+              <table class="table table-hover" id="timeTable">
+                <thead>
+                    <tr>
+                    <th>Train No.</th>
+                    <th>Destination</th>
+                    <th>Ticket Price(AC/Sleeper)</th>
+                    <th>Arriving Time</th>
+                    <th>Seat Available(AC/Sleeper)</th>
+                    </tr>
+                    
+                    
+                </thead>
+
+                
+                <tbody id="trainTable">
+                  <tr></tr>
+                </tbody>
+
+                
+              </table>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+
+      
+      <div class="col-sm-3">
+        
+        <div class="panel panel-primary">
+          <div class="panel-heading">Add a New Train</div>
+          <div class="panel-body">
+            
+            <form role="form" class='form-horizontal'>
+
+              <div class="form-group">
+                <label for="train">Train</label>
+                <input type="text" class="form-control" id="enterTrain" placeholder="Train ">
+              </div>
+
+              <div class="form-group">
+                <label for="dest">Destination </label>
+                <input type="text" class="form-control" id="enterDest" placeholder="Zzyzx, Mysore,">
+              </div>
+
+              <div class="form-group">
+                <label class="firstTrain" for="firstTrain">First Train Time</label>
+                <label class="militaryTime">&nbsp;(HH:mm | Military)</label>
+                <input type="" class="form-control" id="enterTime" placeholder="23:59">
+              </div>
+
+              <div class="form-group">
+                <label for="minutesAway">Frequency</label>
+                <input type="text" class="form-control" id="enterFrequency" placeholder="120">
+              </div>
+
+              <button type="submit" class="btn btn-warning" id="submit">Add Train</button>
+
+              <hr>
+
+              
+              
+
+            </form>
+
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="assets/js/script.js"></script>
+  <script type="text/javascript" src="assets/js/bg.js"></script>
+
+  
+  <script>
+    $(document).ready(function () {
+      $('#slideshow').cycle({
+        fx: 'fade',
+        pager: '#smallnav',
+        pause: 1,
+        speed: 1800,
+        timeout: 3500
+      });
+    });
+  </script>
+
+</body>
+
+</html>
